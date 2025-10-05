@@ -140,7 +140,7 @@ This step sets up the environment variables needed for Stripe and Django setting
 ### 1️⃣ Create a Stripe Account
 
 - If you don’t already have one, sign up at [https://stripe.com](https://stripe.com).  
-- Use your Stripe account to obtain test API keys.
+- Use your Stripe account to obtain test API key.
 
 ---
 
@@ -153,7 +153,7 @@ This step sets up the environment variables needed for Stripe and Django setting
 
 ### 3️⃣ Create a `.env` File
 
-In the root of your project, create a file named `.env` and add your keys:
+In the root of your project, create a file named `.env` and add your key:
 
     ```env
        STRIPE_SECRET_KEY=sk_test_YOUR_OWN_SECRET_KEY
@@ -247,7 +247,7 @@ Use Stripe **test card numbers** to simulate payments:
 ---
 
 ##  Note:
-- I did not pasted my personal stripe key for privacy reasons. Please test this with your own keys. Thank you.
+- I did not pasted my personal stripe key for privacy reasons. Please test this with your own stripe secret key. Thank you.
 
 
 
