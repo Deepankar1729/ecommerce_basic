@@ -225,7 +225,7 @@ Use Stripe **test card numbers** to simulate payments:
 
 ---
 
-## 5️⃣ Complete Payment
+### 5️⃣ Complete Payment
 
 - Click **Pay** on the Stripe page.  
 - After successful payment:
@@ -238,6 +238,16 @@ Use Stripe **test card numbers** to simulate payments:
 
 ---
 
+##  AI assist:
+
+- Used chatgpt for understanding how stripe works, how to creating a checkout view and for styling my pages with bootsrap.
+- Total time spent: Almost 9 hours. Most time spent in understanding stripe because it is a new concept for me.
+- The code quality can be improved using webhooks.
+
+---
+
+##  Note:
+- I did not pasted my personal stripe key for privacy reasons. Please test this with your own keys. Thank you.
 
 
 
