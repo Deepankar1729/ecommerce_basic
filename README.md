@@ -46,7 +46,7 @@ This project implements a complete e-commerce flow with **user authentication**,
 - If successful → user is redirected to:  
   `/success/?session_id=...`
 - If cancelled → user is sent back to:  
-  `/products/`
+  `/home/`
 
 ---
 
@@ -85,7 +85,7 @@ This project implements a complete e-commerce flow with **user authentication**,
 You now have:
 
 🔐 **Authentication** → Users must register/login before shopping  
-🛒 **Products page** → Users see available products  
+🛒 **Home page** → Users see available products  
 💳 **Stripe Checkout** → Secure payment flow  
 📦 **Order tracking** → Users see their own orders  
 🛠️ **Admin management** → Staff can add products & track all orders  
@@ -99,4 +99,145 @@ You now have:
 - **Django Admin** (Management)
 
 ---
+
+## 🔹 🛠️ Setup & Run Instructions
+
+### 1️ Clone the Repository
+
+Start by cloning the project repo:
+
+    ```bash
+    git clone https://github.com/Deepankar1729/ecommerce_basic.git
+    cd ecommerce_basic
+
+### 2 Create a Virtual Environment
+
+Creating a virtual environment helps keep dependencies separate from your system Python.
+
+    ```bash
+    # Create virtual environment
+      python -m venv venv
+
+Activate the virtual env
+
+    # Linux/Mac:
+      source venv/bin/activate
+
+    # Windows:
+      venv\Scripts\activate
+
+Install Project Dependencies
+
+    ```bash
+       pip install -r requirements.txt
+    
+### 3 Configure Environment Variables (.env)
+
+This step sets up the environment variables needed for Stripe and Django settings.
+
+---
+
+### 1️⃣ Create a Stripe Account
+
+- If you don’t already have one, sign up at [https://stripe.com](https://stripe.com).  
+- Use your Stripe account to obtain test API keys.
+
+---
+
+### 2️⃣ Get Stripe API Keys
+
+- Navigate to **Developers → API Keys** in the Stripe Dashboard.  
+- Copy your **Test Secret Key**.
+
+---
+
+### 3️⃣ Create a `.env` File
+
+In the root of your project, create a file named `.env` and add your keys:
+
+    ```env
+       STRIPE_SECRET_KEY=sk_test_YOUR_OWN_SECRET_KEY
+
+### 4 Database Setup
+
+Apply Migrations
+
+Run the following command to create the necessary database tables:
+
+    ```bash
+       python manage.py migrate
+
+Create a Superuser
+    
+    ```bash
+       python manage.py createsuperuser
+
+Verify Database Setup
+
+     ```bash
+        python manage.py runserver
+
+The server will start and listen on the default address: http://127.0.0.1:8000/
+
+### 5 Test Stripe Payments
+
+This step guides you to test the Stripe checkout flow safely using Stripe's test cards.
+
+---
+
+### 1️⃣ Add a Product (Optional)
+
+- If your database is empty, log in as a superuser at [http://127.0.0.1:8000/admin/] 
+- Add at least one active product with:
+  - Name
+  - Price (in cents)
+  - Description
+  - Image
+  - Mark it as active
+
+---
+
+### 2️⃣ Access the Products Page
+
+- Log in as a normal user (not admin) at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)  
+- You should see available products with **Buy buttons**.
+
+---
+
+### 3️⃣ Proceed to Checkout
+
+- Click the **Buy** button for a product.  
+- You will be redirected to the Stripe-hosted checkout page.
+
+---
+
+### 4️⃣ Enter Test Payment Information
+
+Use Stripe **test card numbers** to simulate payments:
+
+- **Card number:** `4242 4242 4242 4242`  
+- **Expiry date:** Any future date (e.g., `12/34`)  
+- **CVC:** Any 3-digit number (e.g., `123`)  
+- **ZIP code:** Any valid number (e.g., `12345`)
+
+> ✅ This simulates a successful payment in test mode.  
+
+
+---
+
+## 5️⃣ Complete Payment
+
+- Click **Pay** on the Stripe page.  
+- After successful payment:
+  - You are redirected to the **Payment Success** page
+  - The order is recorded in the database
+  - Refreshing the page is safe (no duplicate orders)
+
+- If you cancel:
+  - You are sent back to the **home page**
+
+---
+
+
+
 
